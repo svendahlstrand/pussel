@@ -1,3 +1,6 @@
+#include <Wire.h>
+
+#include "Adafruit_Trellis.h"
 #include "board.h"
 
 const int kBoardSize = 4;
