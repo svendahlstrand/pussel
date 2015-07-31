@@ -1,23 +1,24 @@
 #include "board.h"
 
-Board::Board(int size) {
+Board::Board(int size, int seed) {
   size_ = size;
+
   state_ = new int [size_ * size_];
 
   for (int i = 0; i < size_ * size_; i++) {
     state_[i] = 1;
   }
 
+  srand(seed);
+
   Shuffle();
 }
 
 void Board::Shuffle() {
-  randomSeed(analogRead(0));
-
-  int number_of_moves = random((int) size_ * size_ / 2 + 1);
+  int number_of_moves = rand() % ((int) size_ * size_ / 2) + 1;
 
   for (int i = 0; i < number_of_moves; i++) {
-    int random_position = random(size_ * size_);
+    int random_position = rand() % (size_ * size_);
 
     TogglePositionAndNeighbors(random_position);
   }

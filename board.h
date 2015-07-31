@@ -1,11 +1,11 @@
 #ifndef PUZZLEBOX_BOARD_H
 #define PUZZLEBOX_BOARD_H
 
-#include "arduino.h"
+#include <stdlib.h>
 
 class Board {
  public:
-  explicit Board(int size);
+  explicit Board(int size, int seed);
 
   void Shuffle();
   void MakeMove(int row, int column);
@@ -13,7 +13,7 @@ class Board {
   bool IsAllLit();
 
   int size();
-  
+
  private:
   void TogglePositionAndNeighbors(int position);
   void TogglePosition(int position);

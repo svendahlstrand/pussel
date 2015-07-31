@@ -4,14 +4,16 @@
 #include "board.h"
 
 const int kBoardSize = 4;
-Board board(kBoardSize);
+Board* board;
 
 void setup() {
   Serial.begin(9600);
 
-  for (int row = 0; row < board.size(); row++) {
-    for (int column = 0; column < board.size(); column++) {
-      Serial.print(board.IsLit(row, column) ? "1" : "0");
+  board = new Board(kBoardSize, analogRead(0));
+
+  for (int row = 0; row < board->size(); row++) {
+    for (int column = 0; column < board->size(); column++) {
+      Serial.print(board->IsLit(row, column) ? "1" : "0");
       Serial.print(" ");
     }
 
