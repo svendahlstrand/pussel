@@ -7,23 +7,23 @@
 const int kBoardSize = 4;
 
 Board board(kBoardSize);
-BoardView board_view;
+BoardView boardView;
 
-int user_move_row = 0;
-int user_move_column = 0;
+int userMoveRow = 0;
+int userMoveColumn= 0;
 
 void setup() {
-  board.Begin(analogRead(0));
-  board_view.Begin(&board);
-  board_view.Render();
+  board.begin(analogRead(0));
+  boardView.begin(&board);
+  boardView.render();
 }
 
 void loop() {
   while (Serial.available() > 0) {
-    user_move_row = Serial.parseInt();
-    user_move_column = Serial.parseInt();
+    userMoveRow = Serial.parseInt();
+    userMoveColumn = Serial.parseInt();
 
-    board.MakeMove(user_move_row, user_move_column);
-    board_view.Render();
+    board.makeMove(userMoveRow, userMoveColumn);
+    boardView.render();
   }
 }

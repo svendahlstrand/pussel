@@ -7,17 +7,17 @@ class Board {
  public:
   explicit Board(int size);
 
-  void Begin(int seed);
-  void Shuffle();
-  void MakeMove(int row, int column);
-  bool IsLit(int row, int column);
-  bool IsAllLit();
+  void begin(int seed);
+  void shuffle();
+  void makeMove(int row, int column);
+  bool isLit(int row, int column);
+  bool isAllLit();
 
   int size();
 
  private:
-  void TogglePositionAndNeighbors(int position);
-  void TogglePosition(int position);
+  void togglePositionAndNeighbors(int position);
+  void togglePosition(int position);
 
   int* state_;
   int size_;
