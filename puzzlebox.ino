@@ -7,14 +7,14 @@
 const int kBoardSize = 4;
 
 Board board(kBoardSize);
-BoardView boardView;
+BoardView boardView(board);
 
 int userMoveRow = 0;
 int userMoveColumn= 0;
 
 void setup() {
   board.begin(analogRead(0));
-  boardView.begin(&board);
+  boardView.begin();
   boardView.render();
 }
 

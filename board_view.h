@@ -7,12 +7,12 @@
 
 class BoardView {
  public:
-  explicit BoardView();
+  explicit BoardView(Board& board);
 
-  void begin(Board* board);
+  void begin();
   void render();
  private:
-  Board* board_;
+  Board& board_;
 };
 
 #endif  // PUZZLEBOX_BOARD_VIEW_H
