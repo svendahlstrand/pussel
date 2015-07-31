@@ -12,8 +12,6 @@ int user_move_row = 0;
 int user_move_column = 0;
 
 void setup() {
-  Serial.begin(9600);
-
   board = new Board(kBoardSize, analogRead(0));
   board_view = new BoardView(board);
   board_view->Render();

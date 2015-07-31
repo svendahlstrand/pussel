@@ -1,6 +1,7 @@
 #include "board_view.h"
 
 BoardView::BoardView(Board* board) {
+  Serial.begin(9600);
   board_ = board;
 }
 
