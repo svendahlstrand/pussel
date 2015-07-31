@@ -1,10 +1,6 @@
 #include "board.h"
 
-Board::Board(int size) {
-  size_ = size;
-
-  state_ = new int [size_ * size_];
-
+Board::Board(int size) : size_(size), state_(new int[size_ * size_]) {
   for (int i = 0; i < size_ * size_; i++) {
     state_[i] = 1;
   }
