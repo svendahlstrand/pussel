@@ -10,7 +10,7 @@ class Board {
   void Shuffle();
   void MakeMove(int row, int column);
   bool IsLit(int row, int column);
-  bool isAllLit();
+  bool IsAllLit();
 
   int size();
   

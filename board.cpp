@@ -35,7 +35,7 @@ bool Board::IsLit(int row, int column) {
   return state_[position] == 1;
 }
 
-bool Board::isAllLit() {
+bool Board::IsAllLit() {
   for (int i = 0; i < size_ * size_; i++) {
     if (state_[i] == 0) return false;
   }
