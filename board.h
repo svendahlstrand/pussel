@@ -5,8 +5,9 @@
 
 class Board {
  public:
-  explicit Board(int size, int seed);
+  explicit Board(int size);
 
+  void Begin(int seed);
   void Shuffle();
   void MakeMove(int row, int column);
   bool IsLit(int row, int column);

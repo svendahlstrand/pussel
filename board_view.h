@@ -7,8 +7,9 @@
 
 class BoardView {
  public:
-  explicit BoardView(Board* board);
+  explicit BoardView();
 
+  void Begin(Board* board);
   void Render();
  private:
   Board* board_;
