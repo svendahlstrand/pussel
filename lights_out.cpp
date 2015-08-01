@@ -51,8 +51,8 @@ void LightsOut::togglePositionAndNeighbors(int position) {
   togglePosition(position - kNumberOfRowsAndColumns_);
   togglePosition(position + kNumberOfRowsAndColumns_);
 
-  if (position % 4 != 0) togglePosition(position - 1);
-  if ((position + 1) % 4 != 0) togglePosition(position + 1);
+  if (position % kNumberOfRowsAndColumns_ != 0) togglePosition(position - 1);
+  if ((position + 1) % kNumberOfRowsAndColumns_ != 0) togglePosition(position + 1);
 }
 
 void LightsOut::togglePosition(int position) {
