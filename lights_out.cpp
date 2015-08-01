@@ -23,15 +23,11 @@ void LightsOut::shuffle() {
 }
 
 void LightsOut::makeMove(int row, int column) {
-  int position = row * kNumberOfRowsAndColumns_ + column;
-
-  togglePositionAndNeighbors(position);
+  togglePositionAndNeighbors(positionFromRowAndColum(row, column));
 }
 
 bool LightsOut::isLit(int row, int column) {
-  int position = row * kNumberOfRowsAndColumns_ + column;
-
-  return state_[position];
+  return state_[positionFromRowAndColum(row, column)];
 }
 
 bool LightsOut::isAllLit() {
@@ -44,6 +40,10 @@ bool LightsOut::isAllLit() {
 
 int LightsOut::kNumberOfRowsAndColumns() {
   return kNumberOfRowsAndColumns_;
+}
+
+int LightsOut::positionFromRowAndColum(int row, int column) {
+  return row * kNumberOfRowsAndColumns_ + column;
 }
 
 void LightsOut::togglePositionAndNeighbors(int position) {

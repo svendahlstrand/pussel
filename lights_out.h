@@ -15,6 +15,7 @@ class LightsOut {
   int kNumberOfRowsAndColumns();
 
  private:
+  int positionFromRowAndColum(int row, int colum);
   void togglePositionAndNeighbors(int position);
   void togglePosition(int position);
 
