@@ -1,8 +1,10 @@
 #include "board.h"
 
-Board::Board(int size) : size_(size), state_(new int[size_ * size_]) {
+Board::Board(int size) : size_(size) {
+  state_ = new bool[size_ * size_];
+
   for (int i = 0; i < size_ * size_; i++) {
-    state_[i] = 1;
+    state_[i] = true;
   }
 }
 
@@ -31,12 +33,12 @@ void Board::makeMove(int row, int column) {
 bool Board::isLit(int row, int column) {
   int position = row * size_ + column;
 
-  return state_[position] == 1;
+  return state_[position];
 }
 
 bool Board::isAllLit() {
   for (int i = 0; i < size_ * size_; i++) {
-    if (state_[i] == 0) return false;
+    if (state_[i] == false) return false;
   }
 
   return true;
@@ -53,7 +55,7 @@ void Board::togglePositionAndNeighbors(int position) {
 
 void Board::togglePosition(int position) {
   if (position >= 0 && position < size_ * size_) {
-    state_[position] = state_[position] == 1 ? 0 : 1;
+    state_[position] = !state_[position];
   }
 }
 

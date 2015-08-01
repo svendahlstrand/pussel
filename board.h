@@ -19,7 +19,7 @@ class Board {
   void togglePositionAndNeighbors(int position);
   void togglePosition(int position);
 
-  int* state_;
+  bool* state_;
   int size_;
 };
 
