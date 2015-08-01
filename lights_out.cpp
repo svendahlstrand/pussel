@@ -13,12 +13,25 @@ void LightsOut::begin(int seed = 0) {
 }
 
 void LightsOut::shuffle() {
+  int allPositionsShuffled[kNumberOfLights_];
+
+  for (int i = 0; i < kNumberOfLights_; i++) {
+    allPositionsShuffled[i] = i;
+  }
+
+  for (int i = 0; i < kNumberOfLights_ * 3; i++) {
+    int first = rand() % kNumberOfLights_;
+    int second = rand() % kNumberOfLights_;
+
+    int first_temp = allPositionsShuffled[first];
+    allPositionsShuffled[first] = allPositionsShuffled[second];
+    allPositionsShuffled[second] = first_temp;
+  }
+
   int numberOfMoves = rand() % ((int) kNumberOfLights_ / 2) + 1;
 
   for (int i = 0; i < numberOfMoves; i++) {
-    int randomPosition = rand() % kNumberOfLights_;
-
-    togglePositionAndNeighbors(randomPosition);
+    togglePositionAndNeighbors(allPositionsShuffled[i]);
   }
 }
 
