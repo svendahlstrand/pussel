@@ -3,16 +3,16 @@
 
 #include <arduino.h>
 
-#include "board.h"
+#include "lights_out.h"
 
 class BoardView {
  public:
-  explicit BoardView(Board& board);
+  explicit BoardView(LightsOut& lightsOut);
 
   void begin();
   void render();
  private:
-  Board& board_;
+  LightsOut& lightsOut_;
 };
 
 #endif  // PUZZLEBOX_BOARD_VIEW_H

@@ -1,21 +1,21 @@
 #include <Wire.h>
 
 #include "Adafruit_Trellis.h"
-#include "board.h"
+#include "lights_out.h"
 #include "board_view.h"
 
-Board board;
-BoardView boardView(board);
+LightsOut lightsOut;
+BoardView boardView(lightsOut);
 
 void setup() {
-  board.begin(analogRead(0));
+  lightsOut.begin(analogRead(0));
   boardView.begin();
   boardView.render();
 }
 
 void loop() {
   while (Serial.available() > 0) {
-    board.makeMove(Serial.parseInt(), Serial.parseInt());
+    lightsOut.makeMove(Serial.parseInt(), Serial.parseInt());
     boardView.render();
   }
 }
