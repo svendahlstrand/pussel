@@ -4,9 +4,7 @@
 #include "board.h"
 #include "board_view.h"
 
-const int kBoardSize = 4;
-
-Board board(kBoardSize);
+Board board;
 BoardView boardView(board);
 
 int userMoveRow = 0;

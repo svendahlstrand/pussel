@@ -5,22 +5,21 @@
 
 class Board {
  public:
-  explicit Board(int size);
+  explicit Board();
 
   void begin(int seed);
   void shuffle();
   void makeMove(int row, int column);
   bool isLit(int row, int column);
   bool isAllLit();
-
-  int size();
+  int kSize();
 
  private:
   void togglePositionAndNeighbors(int position);
   void togglePosition(int position);
 
-  bool* state_;
-  int size_;
+  static const int kSize_ = 4;
+  bool state_[kSize_ * kSize_];
 };
 
 #endif  // PUZZLEBOX_BOARD_H

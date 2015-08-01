@@ -7,8 +7,8 @@ void BoardView::begin() {
 }
 
 void BoardView::render() {
-  for (int row = 0; row < board_.size(); row++) {
-    for (int column = 0; column < board_.size(); column++) {
+  for (int row = 0; row < board_.kSize(); row++) {
+    for (int column = 0; column < board_.kSize(); column++) {
       Serial.print(board_.isLit(row, column) ? "1" : "0");
       Serial.print(" ");
     }
