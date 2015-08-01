@@ -7,9 +7,6 @@
 Board board;
 BoardView boardView(board);
 
-int userMoveRow = 0;
-int userMoveColumn= 0;
-
 void setup() {
   board.begin(analogRead(0));
   boardView.begin();
@@ -18,10 +15,7 @@ void setup() {
 
 void loop() {
   while (Serial.available() > 0) {
-    userMoveRow = Serial.parseInt();
-    userMoveColumn = Serial.parseInt();
-
-    board.makeMove(userMoveRow, userMoveColumn);
+    board.makeMove(Serial.parseInt(), Serial.parseInt());
     boardView.render();
   }
 }
