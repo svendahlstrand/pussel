@@ -1,6 +1,5 @@
 #include <Wire.h>
 
-#include "Adafruit_Trellis.h"
 #include "lights_out.h"
 #include "lights_out_serial_view.h"
 
