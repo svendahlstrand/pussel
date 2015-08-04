@@ -13,6 +13,7 @@ class LightsOut {
   bool isLit(int row, int column);
   bool isAllLit();
   int kNumberOfRowsAndColumns();
+  int kNumberOfLights();
 
  private:
   int positionFromRowAndColum(int row, int colum);

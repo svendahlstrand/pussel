@@ -55,6 +55,10 @@ int LightsOut::kNumberOfRowsAndColumns() {
   return kNumberOfRowsAndColumns_;
 }
 
+int LightsOut::kNumberOfLights() {
+  return kNumberOfLights_;
+}
+
 int LightsOut::positionFromRowAndColum(int row, int column) {
   return row * kNumberOfRowsAndColumns_ + column;
 }
