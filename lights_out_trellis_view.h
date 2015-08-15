@@ -10,11 +10,15 @@ class LightsOutTrellisView {
  public:
   explicit LightsOutTrellisView(LightsOut& lightsOut);
   void begin();
+  void update();
   void render();
   void renderWithDelay(int delay_time);
   void renderWinSequence();
   bool shouldHandleButtonActivity();
   bool wasButtonJustPressed(int row, int column);
+  int popPressedButtonsBuffer();
+  void pushPressedButtonsBuffer(int button);
+  bool oneOrMoreInPressedButtonsBuffer();
 
  private:
   LightsOut& lightsOut_;
@@ -22,6 +26,11 @@ class LightsOutTrellisView {
   Adafruit_TrellisSet trellis_;
   int numberOfKeys_;
   unsigned long lastSwitchRead_;
+
+  int pressedButtonsBuffer_[8];
+  void clearPressedButtonsBuffer();
+  int sizePressedButtonsBuffer();
+  int nextFreeIndexForPressedButtonsBuffer();
 
   void renderStartupSequence();
 };

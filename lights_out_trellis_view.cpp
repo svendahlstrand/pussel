@@ -6,6 +6,8 @@
 LightsOutTrellisView::LightsOutTrellisView(LightsOut& lightsOut) : lightsOut_(lightsOut), matrix_(), trellis_(&matrix_) {
   numberOfKeys_ = lightsOut_.kNumberOfLights();
   lastSwitchRead_ = 0;
+
+  clearPressedButtonsBuffer();
 }
 
 void LightsOutTrellisView::begin() {
@@ -116,3 +118,58 @@ void LightsOutTrellisView::renderWinSequence() {
 
   delay(1000);
 }
+
+void LightsOutTrellisView::clearPressedButtonsBuffer() {
+  for (int i = 0; i < sizePressedButtonsBuffer(); i++) {
+    pressedButtonsBuffer_[i] = -1;
+  }
+}
+void LightsOutTrellisView::pushPressedButtonsBuffer(int button) {
+  int nextFreeIndex = nextFreeIndexForPressedButtonsBuffer();
+
+  if (nextFreeIndex != -1) {
+    pressedButtonsBuffer_[nextFreeIndex] = button;
+  }
+}
+
+int LightsOutTrellisView::popPressedButtonsBuffer() {
+  for (int i = sizePressedButtonsBuffer() - 1; i >= 0; i--) {
+    if (pressedButtonsBuffer_[i] != -1) {
+      int button = pressedButtonsBuffer_[i];
+      pressedButtonsBuffer_[i] = -1;
+
+      return button;
+    }
+  }
+
+  return -1;
+}
+
+int LightsOutTrellisView::sizePressedButtonsBuffer() {
+  return sizeof(pressedButtonsBuffer_) / sizeof(int);
+}
+
+int LightsOutTrellisView::nextFreeIndexForPressedButtonsBuffer() {
+  for (int i = 0; i < sizePressedButtonsBuffer(); i++) {
+    if (pressedButtonsBuffer_[i] == -1) return i;
+  }
+
+  return -1;
+}
+
+void LightsOutTrellisView::update() {
+  if (shouldHandleButtonActivity()) {
+    for (int row = 0; row < lightsOut_.kNumberOfRowsAndColumns(); row++) {
+      for (int column = 0; column < lightsOut_.kNumberOfRowsAndColumns(); column++) {
+        if (wasButtonJustPressed(row, column)) {
+          pushPressedButtonsBuffer(row * lightsOut_.kNumberOfRowsAndColumns() + column);
+        }
+      }
+    }
+  }
+}
+
+bool LightsOutTrellisView::oneOrMoreInPressedButtonsBuffer() {
+  return pressedButtonsBuffer_[0] != -1;
+}
+

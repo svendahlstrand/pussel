@@ -13,13 +13,14 @@ void setup() {
 }
 
 void loop() {
-  if (lightsOutView.shouldHandleButtonActivity()) {
-    for (int row = 0; row < lightsOut.kNumberOfRowsAndColumns(); row++) {
-      for (int column = 0; column < lightsOut.kNumberOfRowsAndColumns(); column++) {
-        if (lightsOutView.wasButtonJustPressed(row, column)) {
-          lightsOut.makeMove(row, column);
-        }
-      }
+  lightsOutView.update();
+
+  if (lightsOutView.oneOrMoreInPressedButtonsBuffer()) {
+    for (int button = lightsOutView.popPressedButtonsBuffer(); button >= 0; button = lightsOutView.popPressedButtonsBuffer()) {
+      int row = (int) button / lightsOut.kNumberOfRowsAndColumns();
+      int column = button % lightsOut.kNumberOfRowsAndColumns();
+
+      lightsOut.makeMove(row, column);
     }
 
     if (lightsOut.isAllLit()) {
