@@ -1,5 +1,5 @@
-#ifndef PUZZLEBOX_LIGHTS_OUT_TRELLIS_VIEW_H
-#define PUZZLEBOX_LIGHTS_OUT_TRELLIS_VIEW_H
+#ifndef PUSSEL_LIGHTS_OUT_TRELLIS_VIEW_H
+#define PUSSEL_LIGHTS_OUT_TRELLIS_VIEW_H
 
 #include <arduino.h>
 
@@ -35,4 +35,4 @@ class LightsOutTrellisView {
   void renderStartupSequence();
 };
 
-#endif  // PUZZLEBOX_LIGHTS_OUT_TRELLIS_VIEW_H
+#endif  // PUSSEL_LIGHTS_OUT_TRELLIS_VIEW_H

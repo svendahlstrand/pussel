@@ -1,5 +1,5 @@
-#ifndef PUZZLEBOX_LIGHTS_OUT_H
-#define PUZZLEBOX_LIGHTS_OUT_H
+#ifndef PUSSEL_LIGHTS_OUT_H
+#define PUSSEL_LIGHTS_OUT_H
 
 #include <stdlib.h>
 
@@ -25,4 +25,4 @@ class LightsOut {
   bool state_[kNumberOfLights_];
 };
 
-#endif  // PUZZLEBOX_LIGHTS_OUT_H
+#endif  // PUSSEL_LIGHTS_OUT_H
